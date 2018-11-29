@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
 })
 export class UserService {
 
-   USERS_URL = 'http://localhost:8081/users/';
+   USERS_URL = 'http://localhost:8081/api/users/';
   // USERS_URL = 'api/users/mock-users.json';
 
   constructor(private httpClient: HttpClient) { }

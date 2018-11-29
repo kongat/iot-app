@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RoomService {
-  ROOMS_URL = 'http://localhost:8081/rooms/';
+  ROOMS_URL = 'http://localhost:8081/api/rooms/';
 
   constructor(private httpClient: HttpClient) { }
 

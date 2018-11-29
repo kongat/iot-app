@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DeviceService {
-  DEVICES_URL = 'http://localhost:8081/devices/';
+  DEVICES_URL = 'http://localhost:8081/api/devices/';
 
   constructor(private httpClient: HttpClient) { }
 
