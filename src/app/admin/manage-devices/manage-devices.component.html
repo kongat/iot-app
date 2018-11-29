@@ -1,0 +1,20 @@
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Value</th>
+      <th scope="col">Status</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let device of devices">
+      <th scope="row">{{device.id}}</th>
+      <td>{{device.value}}</td>
+      <td>{{device.status}}</td>
+      <td>{{device.name}}</td>
+    </tr>
+  </tbody>
+</table>
+</section>
