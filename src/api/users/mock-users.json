@@ -1,0 +1,314 @@
+[
+  {
+    "id": 6,
+    "name": "Kwstas",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Makis",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Nineta",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "KwstasNtina",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Nteni",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Takis",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Lakis",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Marika",
+    "lastName": "kwstas",
+    "email": "kwstAS@KWSTAS",
+    "password": "kwstasasasas",
+    "role": "USER",
+    "devices": [
+      {
+        "id": 7,
+        "value": 0,
+        "status": false,
+        "name": "Toaster -1",
+        "room": null
+      },
+      {
+        "id": 15,
+        "value": 0,
+        "status": false,
+        "name": "Coffee Maker - 1",
+        "room": null
+      },
+      {
+        "id": 9,
+        "value": 0,
+        "status": false,
+        "name": "Refrigerator - 1",
+        "room": null
+      },
+      { "id": 11, "value": 0, "status": false, "name": "Fan -1", "room": null },
+      {
+        "id": 13,
+        "value": 0,
+        "status": false,
+        "name": "Fujitsu Air-condition",
+        "room": null
+      }
+    ]
+  }
+]

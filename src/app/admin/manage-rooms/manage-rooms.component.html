@@ -10,7 +10,7 @@
   <tbody>
       <tr *ngFor="let room of rooms">
           <th scope="row">{{room.id}}</th>
-          <td>{{room.name}}</td>
+          <td><a [routerLink]="['manage-rooms',room.id]">{{room.name}}</a></td>
         </tr>
   </tbody>
 </table>

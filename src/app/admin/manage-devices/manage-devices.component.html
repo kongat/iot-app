@@ -13,7 +13,7 @@
       <th scope="row">{{device.id}}</th>
       <td>{{device.value}}</td>
       <td>{{device.status}}</td>
-      <td>{{device.name}}</td>
+      <td><a [routerLink]="[device.id]">{{device.name}}</a></td>
     </tr>
   </tbody>
 </table>
