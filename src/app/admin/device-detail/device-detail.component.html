@@ -1,45 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="device">
   <div class="py-5 text-center">
     <h2>Manage Device Form</h2>
     <p class="lead"></p>
   </div>
   <div class="row" *ngIf="device">
-    <div class="col-md-4 order-md-2 mb-4" *ngIf="device.users">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Assigned Users</span>
-        <span class="badge badge-secondary badge-pill">{{
-          device.users.length
-        }}</span>
-      </h4>
-      <ul class="list-group mb-3" *ngFor="let user of device.users">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">{{ user.name }}</h6>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
-          <span
-            ><button
-              type="button"
-
-              class="btn btn-warning"
-            >
-              Unassign
-            </button></span
-          >
-        </li>
-      </ul>
-
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code" />
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-8 order-md-1" *ngIf="device">
+    <div class="col-md-8 offset-2" *ngIf="device">
       <h4 class="mb-3">Device Information</h4>
       <form class="needs-validation" novalidate>
         <div class="row">
@@ -122,6 +87,58 @@
           Delete Device
         </button>
       </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 drag-column offset-2">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Non Assigned Devices</span>
+        <span class="badge badge-secondary badge-pill" *ngIf="this.nonAssignedUsers">{{
+          this.nonAssignedUsers.length
+        }}</span>
+      </h4>
+      <ul class="list-group mb-3" style="">
+        <li
+          *ngFor="let user of nonAssignedUsers"
+          class="list-group-item d-flex justify-content-between lh-condensed"
+          pDraggable="eeee"
+          (onDragStart)="dragStart($event, user)"
+          (onDragEnd)="dragEnd($event)"
+        >
+          <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
+          <img src="" style="float:left" draggable="false" />
+          <div style="margin:8px 0 0 8px;float:left">
+            {{ user.id }} - {{ user.name }}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="col-md-4  drop-column"
+      pDroppable="eeee"
+      (onDrop)="drop($event)"
+      [ngClass]="{ 'ui-highlight-car': draggedUser }"
+    >
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Assigned Users</span>
+        <span class="badge badge-secondary badge-pill">{{
+          device.users.length
+        }}</span>
+      </h4>
+      <ul class="list-group mb-3" *ngFor="let user of device.users">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{ user.name }}</h6>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span
+            ><button type="button" class="btn btn-warning" (click)="unassignUser(user)">
+              Unassign
+            </button></span
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </div>
