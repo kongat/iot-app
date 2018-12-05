@@ -1,14 +1,14 @@
 <div class="container" *ngIf="device">
-  <div class="py-5 text-center">
-    <h2>Manage Device Form</h2>
-    <p class="lead"></p>
-  </div>
-  <div class="row" *ngIf="device">
-    <div class="col-md-8 offset-2" *ngIf="device">
-      <h4 class="mb-3">Device Information</h4>
+
+  <div  *ngIf="device">
+    <div class="row">
+    <div class="col-md-8 offset-md-2" *ngIf="device">
+      <h4 class="mb-3"><span class="text-muted">Device Information</span></h4>
+      </div>
+    </div>
       <form class="needs-validation" novalidate>
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 offset-md-2 mb-3">
             <label for="firstName">Device Name</label>
             <input
               [(ngModel)]="device.name"
@@ -22,7 +22,7 @@
             />
             <div class="invalid-feedback"></div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 mb-3">
             <label for="lastName">Status</label>
             <input
               [(ngModel)]="device.status"
@@ -39,7 +39,7 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 offset-md-2 mb-3">
             <div class="mb-3">
               <label for="username">Value</label>
               <div class="input-group">
@@ -58,7 +58,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 mb-3">
             <div class="mb-3">
               <label for="email">Room </label>
               <input
@@ -75,7 +75,8 @@
             </div>
           </div>
         </div>
-
+        <div class="row">
+        <div class="col-md-4 mb-3 offset-md-4">
         <button
           class="btn btn-primary btn-lg btn-block"
           (click)="saveDevice()"
@@ -86,11 +87,20 @@
         <button class="btn btn-danger btn-lg btn-block" type="submit">
           Delete Device
         </button>
+      </div>
+    </div>
+
       </form>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4 drag-column offset-2">
+    <div class="col-md-8 offset-2">
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 drag-column offset-md-2">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Non Assigned Devices</span>
         <span class="badge badge-secondary badge-pill" *ngIf="this.nonAssignedUsers">{{
@@ -105,11 +115,12 @@
           (onDragStart)="dragStart($event, user)"
           (onDragEnd)="dragEnd($event)"
         >
-          <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
           <img src="" style="float:left" draggable="false" />
           <div style="margin:8px 0 0 8px;float:left">
             {{ user.id }} - {{ user.name }}
           </div>
+          <i-move style="float:right;margin-top:8px" *ngIf="!mobile"></i-move>
+          <i-plus-circle style="float:right;margin-top:8px" *ngIf="mobile" (click)="clickedAssignUser(user)"></i-plus-circle>
         </li>
       </ul>
     </div>
@@ -141,4 +152,4 @@
       </ul>
     </div>
   </div>
-</div>
+

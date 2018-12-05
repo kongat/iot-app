@@ -23,6 +23,7 @@ export class UserDetailComponent implements OnInit {
 
   user: User;
   userDevice: UserDevice;
+  mobile: boolean;
 
   constructor(
     private userService: UserService,
@@ -43,6 +44,10 @@ export class UserDetailComponent implements OnInit {
             this.availableDevices = _.differenceBy( devices, this.user.devices, 'id');
       });
     });
+
+    if (window.screen.width <= 360) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
   saveUser() {
@@ -73,9 +78,21 @@ export class UserDetailComponent implements OnInit {
       deviceId: deviceId
     };
 
-
-
     this.userService.assignDevice(this.userDevice).subscribe();
+  }
+
+  clickedAssignDevice(clickAssignedDevice: Device) {
+    this.userDevice = {
+      userId: this.user.id,
+      deviceId: clickAssignedDevice.id
+    };
+
+    this.availableDevices = this.availableDevices.filter(
+      device => device.id !== clickAssignedDevice.id
+    );
+    this.user.devices.push(clickAssignedDevice);
+    this.userService.assignDevice(this.userDevice).subscribe();
+
   }
 
   // drag n drop

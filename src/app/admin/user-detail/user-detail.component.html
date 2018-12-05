@@ -1,15 +1,16 @@
+
 <div class="container">
-  <div class="py-5 text-center">
-    <h2>Manage User Form</h2>
-    <p class="lead">
-    </p>
-  </div>
-  <div class="row" >
-    <div class="col-md-8 order-md-1 offset-2" *ngIf="user">
-      <h4 class="mb-3">User Information</h4>
+
+    <div *ngIf="user">
+      <div class="row">
+        <div class="col-md-4 offset-md-2">
+            <h4 class="mb-3"><span class="text-muted">User Information</span></h4>
+        </div>
+      </div>
+
       <form class="needs-validation" novalidate>
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 offset-md-2 mb-3">
             <label for="firstName">First Name</label>
             <input
               [(ngModel)]="user.name"
@@ -23,7 +24,7 @@
             />
             <div class="invalid-feedback"></div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 mb-3">
             <label for="lastName">Last name</label>
             <input
             [(ngModel)]="user.lastName"
@@ -38,8 +39,8 @@
             <div class="invalid-feedback">Valid last name is required.</div>
           </div>
         </div>
-
-        <div class="mb-3">
+        <div class="row">
+        <div class="col-md-4 offset-md-2 mb-3">
           <label for="username">Role</label>
           <div class="input-group">
             <input
@@ -57,7 +58,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-4 mb-3">
           <label for="email"
             >Email </label
           >
@@ -73,20 +74,29 @@
             Please enter a valid email address for shipping updates.
           </div>
         </div>
-
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3 offset-md-4">
         <button class="btn btn-primary btn-lg btn-block" (click)="saveUser()" type="submit">
           Update User
         </button>
         <button class="btn btn-danger btn-lg btn-block" type="submit">
           Delete User
         </button>
+      </div>
+    </div>
       </form>
+    </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-2">
+        <hr>
     </div>
   </div>
 
-  <hr>
   <div class="row">
-      <div class="col-md-4 drag-column offset-2">
+
+      <div class="col-md-4 drag-column offset-md-2" >
           <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-muted">Non Accessable Devices</span>
               <span class="badge badge-secondary badge-pill">{{this.availableDevices.length}}</span>
@@ -94,9 +104,11 @@
           <ul class= "list-group mb-3"style="">
               <li *ngFor="let device of availableDevices" class="list-group-item d-flex justify-content-between lh-condensed" pDraggable="devices"
                   (onDragStart)="dragStart($event,device)" (onDragEnd)="dragEnd($event)">
-                  <i class="fa fa-arrows fa-2x" style="float:right;margin-top:8px"></i>
+
                   <img src="" style="float:left" draggable="false">
                   <div style="margin:8px 0 0 8px;float:left">{{device.id}} - {{device.name}}</div>
+                  <i-move style="float:right;margin-top:8px" *ngIf="!mobile"></i-move>
+                  <i-plus-circle style="float:right;margin-top:8px" *ngIf="mobile" (click)="clickedAssignDevice(device)"></i-plus-circle>
               </li>
           </ul>
       </div>

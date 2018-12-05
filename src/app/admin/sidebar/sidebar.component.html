@@ -1,0 +1,55 @@
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" [routerLink]="['/admin-dashboard/manage-users']">
+              <i-users></i-users>
+            Users <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/admin-dashboard/manage-devices']">
+              <i-tv></i-tv>
+              Devices
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/admin-dashboard/manage-rooms']">
+                <i-home></i-home>
+             Rooms
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Add new</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i-plus></i-plus>
+              User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i-plus></i-plus>
+              Device
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i-plus></i-plus>
+              Room
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+</nav>

@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from 'primeng/dragdrop';
 import {TableModule} from 'primeng/table';
 import {ListboxModule} from 'primeng/listbox';
+import { IconPlus, IconUsers, IconMove, IconHome, IconTv, IconPlusCircle } from 'angular-feather';
 
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -16,6 +17,7 @@ import { ManageDevicesComponent } from './manage-devices/manage-devices.componen
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [AdminMenuComponent,
@@ -25,7 +27,8 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
     ManageDevicesComponent,
     UserDetailComponent,
     DeviceDetailComponent,
-    RoomDetailComponent],
+    RoomDetailComponent,
+    SidebarComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -33,7 +36,8 @@ import { RoomDetailComponent } from './room-detail/room-detail.component';
     BrowserAnimationsModule,
     DragDropModule,
     TableModule,
-    ListboxModule
+    ListboxModule, IconPlus, IconUsers, IconMove, IconHome, IconTv, IconPlusCircle
+
   ]
 })
 export class AdminModule { }

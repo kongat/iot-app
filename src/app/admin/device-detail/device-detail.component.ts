@@ -25,6 +25,8 @@ export class DeviceDetailComponent implements OnInit {
 
   draggedUser: User;
 
+  mobile: boolean;
+
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
@@ -37,6 +39,9 @@ export class DeviceDetailComponent implements OnInit {
             this.nonAssignedUsers = _.differenceBy( users, this.device.users, 'id');
       });
     });
+    if (window.screen.width === 360) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
   saveDevice() {
@@ -68,6 +73,20 @@ export class DeviceDetailComponent implements OnInit {
       deviceId: this.device.id
     };
     this.userService.assignDevice(this.userDevice).subscribe();
+  }
+
+  clickedAssignUser(clickAssignedUser: User) {
+    this.userDevice = {
+      userId: this.device.id,
+      deviceId: clickAssignedUser.id
+    };
+
+    this.nonAssignedUsers = this.nonAssignedUsers.filter(
+      device => device.id !== clickAssignedUser.id
+    );
+    this.device.users.push(clickAssignedUser);
+    this.userService.assignDevice(this.userDevice).subscribe();
+
   }
 
   // drag n drop
