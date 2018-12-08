@@ -1,4 +1,4 @@
-import { Role } from './role.enum';
+import { Role } from './role';
 import { Device } from './device';
 
 export class User {
@@ -8,7 +8,7 @@ export class User {
   lastName: string ;
   email: string;
   password: string ;
-  role: string;
+  roles: Role[];
   devices: Device[];
 }
 

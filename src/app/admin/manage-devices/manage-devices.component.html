@@ -1,21 +1,97 @@
-<h2>Section title</h2>
-<div class="table-responsive">
+<div class="container">
+  <h2>Section title</h2>
+  <h2>Add New Device</h2>
+  <form novalidate #form="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputName">Device Name</label>
+        <input
+          type="text"
+          [class.is-invalid]="deviceName.invalid && deviceName.touched"
+          [(ngModel)]="newDevice.name"
+          #deviceName="ngModel"
+          class="form-control"
+          id="inputName"
+          name="inputName"
+          placeholder="Device Name"
+          required
+        />
+        <div
+          *ngIf="deviceName.invalid && deviceName.touched"
+          class="invalid-feedback"
+          role="alert"
+        >
+          Device name is required!
+        </div>
+      </div>
+      <div class="form-group col-md-3" >
+          <label for="room">Room</label>
+          <select required class="form-control" [class.is-invalid]="room.invalid && room.touched" name="room" id="room" #room="ngModel" [(ngModel)]="newDevice.room">
+            <option [ngValue]="null">Select a Room</option>
+            <option *ngFor="let room of rooms" [ngValue]="room.name">{{room.name}}</option>
+          </select>
+          <div
+          *ngIf="room.invalid && room.touched"
+          class="invalid-feedback"
+          role="alert"
+        >
+         Room is required!
+        </div>
+
+        </div>
+        <div class="form-group col-md-3" >
+            <label class="control-label">Device Type</label>
+            <select required class="form-control" [class.is-invalid]="type.invalid && type.touched" name="type" id="type" #type="ngModel" [(ngModel)]="newDevice.deviceType">
+              <option [ngValue]="null">Select a Device Type</option>
+              <option *ngFor="let type of deviceTypes" [ngValue]="type.name">{{type.name}}</option>
+            </select>
+            <div
+            *ngIf="type.invalid && type.touched"
+            class="invalid-feedback"
+            role="alert"
+          >
+           Device Type is required!
+          </div>
+
+          </div>
+
+    </div>
+
+
+    <button
+      type="submit"
+      (click)="addDevice(newDevice)"
+      [class.disabled]="form.invalid"
+      class="btn btn-primary"
+    >
+      Add Device
+    </button>
+    odel: {{newDevice | json}}
+    Form valMue: {{form.value | json}}
+    {{form.valid}}
+  </form>
+  <hr />
+  <h2>Section title</h2>
+  <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Value</th>
-      <th scope="col">Status</th>
-      <th scope="col">Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let device of devices">
-      <th scope="row">{{device.id}}</th>
-      <td>{{device.value}}</td>
-      <td>{{device.status}}</td>
-      <td><a [routerLink]="[device.id]">{{device.name}}</a></td>
-    </tr>
-  </tbody>
-</table>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Value</th>
+          <th scope="col">Status</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of devices">
+          <th scope="row">{{ device.id }}</th>
+          <td>{{ device.value }}</td>
+          <td>{{ device.status }}</td>
+          <td>
+            <a [routerLink]="[device.id]">{{ device.name }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

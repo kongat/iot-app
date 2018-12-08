@@ -13,7 +13,7 @@
           <div class="col-md-4 offset-md-2 mb-3">
             <label for="firstName">First Name</label>
             <input
-              [(ngModel)]="user.name"
+              [(ngModel)]="updatedUser.firstName"
               type="text"
               class="form-control"
               id="firstName"
@@ -27,7 +27,7 @@
           <div class="col-md-4 mb-3">
             <label for="lastName">Last name</label>
             <input
-            [(ngModel)]="user.lastName"
+            [(ngModel)]="updatedUser.lastName"
               type="text"
               class="form-control"
               id="lastName"
@@ -44,7 +44,7 @@
           <label for="username">Role</label>
           <div class="input-group">
             <input
-              [(ngModel)]="user.role"
+              [(ngModel)]="updatedUser.role"
               type="text"
               class="form-control"
               id="role"
@@ -63,7 +63,7 @@
             >Email </label
           >
           <input
-          [(ngModel)] = "user.email"
+          [(ngModel)] = "updatedUser.email"
             type="email"
             class="form-control"
             id="email"
@@ -87,6 +87,8 @@
     </div>
       </form>
     </div>
+    odel: {{updatedUser| json}}
+
 
   <div class="row">
     <div class="col-md-8 offset-2">

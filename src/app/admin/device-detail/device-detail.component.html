@@ -11,7 +11,7 @@
           <div class="col-md-4 offset-md-2 mb-3">
             <label for="firstName">Device Name</label>
             <input
-              [(ngModel)]="device.name"
+              [(ngModel)]="updatedDevice.name"
               type="text"
               class="form-control"
               id="firstName"
@@ -25,7 +25,7 @@
           <div class="col-md-4 mb-3">
             <label for="lastName">Status</label>
             <input
-              [(ngModel)]="device.status"
+              [(ngModel)]="updatedDevice.status"
               type="text"
               class="form-control"
               id="lastName"
@@ -44,7 +44,7 @@
               <label for="username">Value</label>
               <div class="input-group">
                 <input
-                  [(ngModel)]="device.value"
+                  [(ngModel)]="updatedDevice.value"
                   type="text"
                   class="form-control"
                   id="role"
@@ -60,18 +60,18 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="mb-3">
-              <label for="email">Room </label>
-              <input
-                [(ngModel)]="device.room"
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-              />
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
+              <label for="room">Room</label>
+          <select required class="form-control" [class.is-invalid]="room.invalid && room.touched" name="room" id="room" #room="ngModel" [(ngModel)]="updatedDevice.room">
+            <option [ngValue]="null">Select a Room</option>
+            <option *ngFor="let room of rooms" [ngValue]="room.name">{{room.name}}</option>
+          </select>
+          <div
+          *ngIf="room.invalid && room.touched"
+          class="invalid-feedback"
+          role="alert"
+        >
+         Room is required!
+        </div>
             </div>
           </div>
         </div>

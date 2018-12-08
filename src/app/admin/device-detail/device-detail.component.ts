@@ -6,6 +6,10 @@ import { User } from 'src/app/models/user';
 import { UserDevice } from 'src/app/models/user-device';
 import { UserService } from 'src/app/services/user.service';
 import * as _ from 'lodash';
+import { AdminDevice } from 'src/app/models/admin-device';
+import { DeviceType } from 'src/app/models/device-type';
+import { Room } from 'src/app/models/room';
+import { RoomService } from 'src/app/services/room.service';
 
 @Component({
   selector: 'app-device-detail',
@@ -16,7 +20,8 @@ export class DeviceDetailComponent implements OnInit {
 
   constructor(private deviceService: DeviceService,
     private userService: UserService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private roomService: RoomService) { }
 
   device: Device;
   userDevice: UserDevice;
@@ -26,6 +31,14 @@ export class DeviceDetailComponent implements OnInit {
   draggedUser: User;
 
   mobile: boolean;
+  updatedDevice: AdminDevice = {
+    name: '',
+    deviceType: '',
+    room: '',
+    value: null,
+    status: null
+  };
+  rooms: Room[];
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -34,18 +47,28 @@ export class DeviceDetailComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
       this.device = data;
+      this.updatedDevice.name = data.name;
+      this.updatedDevice.deviceType = data.deviceType.name;
+      this.updatedDevice.room = data.room.name;
+      this.updatedDevice.value = data.value;
+      this.updatedDevice.status = data.status;
+
       this.userService.getUsers()
           .subscribe(users => {
             this.nonAssignedUsers = _.differenceBy( users, this.device.users, 'id');
       });
     });
-    if (window.screen.width === 360) { // 768px portrait
+      this.roomService.getRooms()
+      .subscribe(
+        data => this.rooms = data
+      );
+    if (window.screen.width <= 360) { // 768px portrait
       this.mobile = true;
     }
   }
 
   saveDevice() {
-    this.deviceService.updateDevice(this.device)
+    this.deviceService.updateDevice(this.updatedDevice, this.device)
       .subscribe(data => {
         console.log();
         this.device = data;

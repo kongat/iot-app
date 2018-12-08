@@ -3,17 +3,29 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Device } from '../models/device';
 import {map, find, catchError} from 'rxjs/operators';
-import { User } from '../models/user';
-import { UserDevice } from '../models/user-device';
+import { AdminDevice } from '../models/admin-device';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
   DEVICES_URL = 'http://localhost:8081/api/devices/';
-  USERS_URL = 'http://localhost:8081/api/users/';
 
   constructor(private httpClient: HttpClient) { }
+
+  addDevice(device: AdminDevice): Observable<Device> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+
+    return this.httpClient.post<any>(this.DEVICES_URL + 'newDevice', device, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
 
 
   getDevices(): Observable<Device[]> {
@@ -26,13 +38,13 @@ export class DeviceService {
 
   getDevice(id: number): Observable<Device> {
 
-    return this.httpClient.get<Device>
+    return this.httpClient.get<any>
       (this.DEVICES_URL + id);
   }
 
-  updateDevice(device: Device) {
+  updateDevice(updatedDevice: AdminDevice, device: Device) {
     return this.httpClient.put<Device>
-    (this.DEVICES_URL + device.id, device);
+    (this.DEVICES_URL + 'updateDevice/' + device.id, updatedDevice);
   }
 
 

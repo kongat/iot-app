@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Device } from 'src/app/models/device';
 import { DeviceService } from 'src/app/services/device.service';
 import * as _ from 'lodash';
+import { AdminUser } from 'src/app/models/admin-user';
 
 @Component({
   selector: 'app-user-detail',
@@ -25,18 +26,34 @@ export class UserDetailComponent implements OnInit {
   userDevice: UserDevice;
   mobile: boolean;
 
+  updatedUser: AdminUser = {
+    firstName : '',
+    lastName: '',
+    email: '',
+    password: '',
+    role: 'ROLE_USER'
+  };
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private deviceService: DeviceService
   ) {}
 
+
+
+
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.userService.getUser(id).subscribe(data => {
       this.user = data;
-
+      this.updatedUser.firstName = data.name;
+      this.updatedUser.lastName = data.lastName;
+      this.updatedUser.email = data.email;
+      this.updatedUser.password = data.password;
+      this.updatedUser.role = data.roles[0].name;
+      // console.log(this.user);
       // get the devices that the user has no acces to
       // these devices will be availale for drag
       this.deviceService.getDevices()
@@ -50,8 +67,10 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+
   saveUser() {
-    this.userService.updateUser(this.user).subscribe(data => {
+
+    this.userService.updateUser(this.user, this.updatedUser).subscribe(data => {
       console.log();
       this.user = data;
     });

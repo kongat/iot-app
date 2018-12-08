@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { User } from '../models/user';
 import {map, catchError} from 'rxjs/operators';
 import { UserDevice } from '../models/user-device';
+import { AdminUser } from '../models/admin-user';
 
 
 
@@ -17,6 +18,19 @@ export class UserService {
    // USERS_URL = 'api/users/mock-users.json';
 
   constructor(private httpClient: HttpClient) { }
+
+  addUser(adminUser: AdminUser): Observable<User> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+
+    return this.httpClient.post<User>(this.USERS_URL + 'addUser', adminUser, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>
@@ -32,9 +46,9 @@ export class UserService {
       (this.USERS_URL + id);
   }
 
-  updateUser(user: User) {
+  updateUser( user: User, updatedUser: AdminUser) {
     return this.httpClient.put<User>
-    (this.USERS_URL + user.id, user);
+    (this.USERS_URL + 'updateUser/' + user.id, updatedUser);
   }
 
   removeDevice(userDevice: UserDevice): Observable<UserDevice> {

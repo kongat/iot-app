@@ -1,4 +1,47 @@
+<div class="container">
+<h2>Add New User</h2>
+<form novalidate #form="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputFirstName">First Name</label>
+        <input type="text"  [class.is-invalid]="firstName.invalid && firstName.touched" [(ngModel)]="newUser.firstName" #firstName="ngModel" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name" required>
+        <div *ngIf="firstName.invalid && firstName.touched"  class="invalid-feedback" role="alert">
+            First name is required!
+          </div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputLastName">Last Name</label>
+        <input  type="text" [class.is-invalid]="lastName.invalid && lastName.touched" [(ngModel)]="newUser.lastName" #lastName="ngModel" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" required>
+        <div *ngIf="lastName.invalid && lastName.touched"  class="invalid-feedback" role="alert">
+            Last name is required!
+          </div>
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputEmail">Email</label>
+          <input type="email" email [class.is-invalid]="email.invalid &&  email.touched"  [(ngModel)]="newUser.email" #email="ngModel" class="form-control" id="inputEmail" name ="inputEmail" placeholder="Email" required>
+          <div *ngIf="email.errors?.required && email.touched"  class="invalid-feedback" role="alert">
+              Email is required!
+            </div>
+            <div *ngIf="email.errors?.email && email.touched"  class="invalid-feedback" role="alert">
+                Email is invalid!
+              </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputPassword">Password</label>
+          <input type="password" [class.is-invalid]="password.invalid &&  password.touched"  [(ngModel)]="newUser.password" #password="ngModel" class="form-control" id="inputPassword" name ="inputPassword" placeholder="Password" required>
+          <div *ngIf="password.invalid && password.touched"  class="invalid-feedback" role="alert">
+              Password is required!
+            </div>
+        </div>
+      </div>
 
+    <button type="submit" [class.disabled]="form.invalid" (click)="addUser(newUser)" class="btn btn-primary">Add User</button>
+  </form>
+  odel: {{newUser | json}}
+    Form valMue: {{form.value | json}}
+<hr>
 <h2>Section title</h2>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -21,6 +64,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 
 
