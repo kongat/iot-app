@@ -75,6 +75,10 @@ export class UserService {
       catchError(this.handleError));
   }
 
+  deleteUser (user: User): Observable<User> {
+    return this.httpClient.get<User>(this.USERS_URL + 'deleteUser/' + user.id);
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

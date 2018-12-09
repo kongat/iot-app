@@ -90,6 +90,9 @@ export class UserDetailComponent implements OnInit {
 
     this.userService.removeDevice(this.userDevice).subscribe();
   }
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user).subscribe();
+  }
 
   assignDevice(deviceId: number) {
     this.userDevice = {

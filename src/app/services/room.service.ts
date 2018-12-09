@@ -13,6 +13,22 @@ export class RoomService {
 
   constructor(private httpClient: HttpClient) { }
 
+  addRoom(room: Room): Observable<Room> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+
+    return this.httpClient.post<Room>(this.ROOMS_URL + 'newRoom', room, httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+  deleteRoom (room: Room): Observable<Room> {
+    return this.httpClient.delete<Room>(this.ROOMS_URL + room.id);
+  }
+
   getRooms(): Observable<Room[]> {
     return this.httpClient.get<any>
     (this.ROOMS_URL).pipe( map(response => {
@@ -23,7 +39,7 @@ export class RoomService {
 
   getRoom(id: number): Observable<Room> {
 
-    return this.httpClient.get<Room>
+    return this.httpClient.get<any>
       (this.ROOMS_URL + id);
   }
 

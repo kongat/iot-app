@@ -9,32 +9,41 @@
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-4 offset-md-2 mb-3">
-            <label for="firstName">Device Name</label>
-            <input
-              [(ngModel)]="updatedDevice.name"
-              type="text"
-              class="form-control"
-              id="firstName"
-              name="firstName"
-              placeholder=""
-              value=""
-              required
-            />
-            <div class="invalid-feedback"></div>
+              <label for="inputName">Device Name</label>
+              <input
+                type="text"
+                [class.is-invalid]="deviceName.invalid && deviceName.touched"
+                [(ngModel)]="updatedDevice.name"
+                #deviceName="ngModel"
+                class="form-control"
+                id="inputName"
+                name="inputName"
+                placeholder="Device Name"
+                required
+              />
+              <div
+                *ngIf="deviceName.invalid && deviceName.touched"
+                class="invalid-feedback"
+                role="alert"
+              >
+                Device name is required!
+              </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="lastName">Status</label>
-            <input
-              [(ngModel)]="updatedDevice.status"
-              type="text"
-              class="form-control"
-              id="lastName"
-              name="lastName"
-              placeholder=""
-              value=""
-              required
-            />
-            <div class="invalid-feedback">Valid last name is required.</div>
+              <label for="status">Status</label>
+            <select required class="form-control" [class.is-invalid]="status.invalid && status.touched" name="status" id="status" #status="ngModel" [(ngModel)]="updatedDevice.status">
+              <option [ngValue]="null">Select Status</option>
+              <option [ngValue]="true">On</option>
+              <option [ngValue]="false">Off</option>
+
+            </select>
+            <div
+                *ngIf="status.invalid && status.touched"
+                class="invalid-feedback"
+                role="alert"
+              >
+                Status is required!
+              </div>
           </div>
         </div>
 
@@ -45,6 +54,8 @@
               <div class="input-group">
                 <input
                   [(ngModel)]="updatedDevice.value"
+                  [class.is-invalid]="value.invalid && value.touched"
+                  #value="ngModel"
                   type="text"
                   class="form-control"
                   id="role"
@@ -52,8 +63,10 @@
                   placeholder="Username"
                   required
                 />
-                <div class="invalid-feedback" style="width: 100%;">
-                  Your username is required.
+                <div   *ngIf="value.invalid && value.touched"
+                class="invalid-feedback"
+                role="alert"class="invalid-feedback" style="width: 100%;">
+                  Value is required.
                 </div>
               </div>
             </div>
@@ -84,13 +97,14 @@
         >
           Update Device
         </button>
-        <button class="btn btn-danger btn-lg btn-block" type="submit">
+        <button class="btn btn-danger btn-lg btn-block" [routerLink]="['/admin-dashboard/manage-devices']" (click)="deleteDevice(device)" type="submit">
           Delete Device
         </button>
       </div>
     </div>
 
       </form>
+
     </div>
   </div>
   <div class="row">

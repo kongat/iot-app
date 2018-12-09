@@ -48,7 +48,6 @@ export class DeviceDetailComponent implements OnInit {
       console.log(data);
       this.device = data;
       this.updatedDevice.name = data.name;
-      this.updatedDevice.deviceType = data.deviceType.name;
       this.updatedDevice.room = data.room.name;
       this.updatedDevice.value = data.value;
       this.updatedDevice.status = data.status;
@@ -65,6 +64,10 @@ export class DeviceDetailComponent implements OnInit {
     if (window.screen.width <= 360) { // 768px portrait
       this.mobile = true;
     }
+  }
+
+  deleteDevice(device: Device): void {
+    this.deviceService.deleteDevice(device).subscribe();
   }
 
   saveDevice() {

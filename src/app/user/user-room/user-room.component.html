@@ -1,61 +1,38 @@
-<section class="rooms">
+<div *ngFor="let room of allRooms">
+  <section class="rooms">
     <div class="container wow fadeIn">
       <div class="row">
         <div class="col-lg-9 text-center text-lg-left">
-          <h3 class="cta-title">Room Name</h3>
-       </div>
+          <h3 class="cta-title">{{ room.name }}</h3>
 
+        </div>
       </div>
-
     </div>
   </section>
 
-
- <!--==========================
+  <!--
+    ==========================
       Portfolio Section
-    ============================-->
-    <section class="portfolio" id="livingroom-background">
-        <div class="container wow fadeInUp">
+    ============================
+  -->
+  <section class="portfolio" id="livingroom-background">
+    <div class="container wow fadeInUp">
+      <div class="row" id="portfolio-wrapper">
+        <div *ngFor='let device of user.devices'>
+        <div
+          class="col-md-10 portfolio-item filter-app"*ngIf="device.room.id ==room.id"
+        >
+          <a href="">
+            <img  src="../../../assets/img/Television.png" alt="" />
+            <div class="details"><h4>Lights</h4></div>
+          </a>
 
-          <div class="row" id="portfolio-wrapper">
-            <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-              <a href="">
-                <img src="../../../assets/img/lamp.png" alt="">
-                <div class="details">
-                  <h4>Lights</h4>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-              <a href="">
-                <img src="../../../assets/img/air-conditioner.png" alt="">
-                <div class="details">
-                  <h4>Air-Conditioner</h4>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-              <a href="">
-                <img src="../../../assets/img/television.png" alt="">
-                <div class="details">
-                  <h4>TV</h4>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                <a href="">
-                  <img src="../../../assets/img/lock.png" alt="">
-                  <div class="details">
-                    <h4>Lock</h4>
-                  </div>
-                </a>
-              </div>
-
-
-          </div>
-
+      </div>
         </div>
-      </section>
+        </div>
+
+      </div>
+
+  </section>
+
+</div>

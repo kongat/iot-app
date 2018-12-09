@@ -39,6 +39,10 @@ export class RoomDetailComponent implements OnInit {
     }
   }
 
+  deleteRoom(room: Room): void {
+    this.roomService.deleteRoom(room).subscribe();
+  }
+
   /* addDeviceToRoom(deviceId: number) {
 
     this.roomService.assignDevice(this.userDevice).subscribe();

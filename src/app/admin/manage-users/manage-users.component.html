@@ -36,11 +36,35 @@
             </div>
         </div>
       </div>
+      <div class="form-row">
+          <div class="form-group col-md-3">
+              <label for="role">Role</label>
+              <select
+                required
+                class="form-control"
+                [class.is-invalid]="role.invalid && role.touched"
+                name="role"
+                id="role"
+                #role="ngModel"
+                [(ngModel)]="newUser.role"
+              >
+                <option [ngValue]="null">Select Status</option>
+                <option value="ROLE_USER">User</option>
+                <option value="ROLE_ADMIN">Admin</option>
+              </select>
+              <div
+                *ngIf="role.invalid && role.touched"
+                class="invalid-feedback"
+                role="alert"
+              >
+                Role is required!
+              </div>
+          </div>
+        </div>
 
     <button type="submit" [class.disabled]="form.invalid" (click)="addUser(newUser)" class="btn btn-primary">Add User</button>
   </form>
-  odel: {{newUser | json}}
-    Form valMue: {{form.value | json}}
+
 <hr>
 <h2>Section title</h2>
 <div class="table-responsive">
@@ -60,7 +84,7 @@
       <td><a [routerLink]="[user.id]">{{user.name}}</a></td>
       <td>{{user.lastName}}</td>
       <td>{{user.email}}</td>
-      <td>{{user.role}}</td>
+      <td>{{user.roles[0].name}}</td>
     </tr>
   </tbody>
 </table>

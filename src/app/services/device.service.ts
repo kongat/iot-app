@@ -38,8 +38,11 @@ export class DeviceService {
 
   getDevice(id: number): Observable<Device> {
 
-    return this.httpClient.get<any>
+    return this.httpClient.get<Device>
       (this.DEVICES_URL + id);
+  }
+  deleteDevice (device: Device): Observable<Device> {
+    return this.httpClient.get<Device>(this.DEVICES_URL + 'deleteDevice/' + device.id);
   }
 
   updateDevice(updatedDevice: AdminDevice, device: Device) {

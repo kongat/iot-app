@@ -1,142 +1,176 @@
-
 <div class="container">
+  <div *ngIf="user">
+    <div class="row">
+      <div class="col-md-4 offset-md-2">
+        <h4 class="mb-3"><span class="text-muted">User Information</span></h4>
+      </div>
+    </div>
 
-    <div *ngIf="user">
+    <form class="needs-validation" novalidate>
       <div class="row">
-        <div class="col-md-4 offset-md-2">
-            <h4 class="mb-3"><span class="text-muted">User Information</span></h4>
+        <div class="col-md-4 offset-md-2 mb-3">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            [class.is-invalid]="firstName.invalid && firstName.touched"
+            [(ngModel)]="updatedUser.firstName"
+            #firstName="ngModel"
+            class="form-control"
+            id="inputFirstName"
+            name="inputFirstName"
+            placeholder="First Name"
+            required
+          />
+
+          <div
+            *ngIf="firstName.invalid && firstName.touched"
+            class="invalid-feedback"
+            role="alert"
+          >
+            First name is required!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="lastName">Last name</label>
+          <input
+            [(ngModel)]="updatedUser.lastName"
+            #lastName="ngModel"
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            [class.is-invalid]="lastName.invalid && lastName.touched"
+            placeholder=""
+            required
+          />
+          <div class="invalid-feedback" *ngIf="lastName.invalid && lastName.touched"
+          class="invalid-feedback"
+          role="alert">Last name is required.</div>
         </div>
       </div>
-
-      <form class="needs-validation" novalidate>
-        <div class="row">
-          <div class="col-md-4 offset-md-2 mb-3">
-            <label for="firstName">First Name</label>
-            <input
-              [(ngModel)]="updatedUser.firstName"
-              type="text"
-              class="form-control"
-              id="firstName"
-              name="firstName"
-              placeholder=""
-              value=""
-              required
-            />
-            <div class="invalid-feedback"></div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="lastName">Last name</label>
-            <input
-            [(ngModel)]="updatedUser.lastName"
-              type="text"
-              class="form-control"
-              id="lastName"
-              name="lastName"
-              placeholder=""
-              value=""
-              required
-            />
-            <div class="invalid-feedback">Valid last name is required.</div>
-          </div>
-        </div>
-        <div class="row">
+      <div class="row">
         <div class="col-md-4 offset-md-2 mb-3">
-          <label for="username">Role</label>
-          <div class="input-group">
-            <input
-              [(ngModel)]="updatedUser.role"
-              type="text"
-              class="form-control"
-              id="role"
-              name="role"
-              placeholder="Username"
-              required
-            />
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
+          <label for="role">Role</label>
+          <select
+            required
+            class="form-control"
+            [class.is-invalid]="role.invalid && role.touched"
+            name="role"
+            id="role"
+            #role="ngModel"
+            [(ngModel)]="updatedUser.role"
+          >
+            <option [ngValue]="null">Select Status</option>
+            <option value="ROLE_USER">User</option>
+            <option value="ROLE_ADMIN">Admin</option>
+          </select>
+          <div
+            *ngIf="role.invalid && role.touched"
+            class="invalid-feedback"
+            role="alert"
+          >
+            Role is required!
           </div>
         </div>
 
         <div class="col-md-4 mb-3">
-          <label for="email"
-            >Email </label
-          >
-          <input
-          [(ngModel)] = "updatedUser.email"
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="you@example.com"
-          />
-          <div class="" *ngIf='true'>
-            Please enter a valid email address for shipping updates.
-          </div>
+          <label for="inputEmail">Email</label>
+          <input type="email" email [class.is-invalid]="email.invalid &&  email.touched"  [(ngModel)]="updatedUser.email" #email="ngModel" class="form-control" id="inputEmail" name ="inputEmail" placeholder="Email" required>
+          <div *ngIf="email.errors?.required && email.touched"  class="invalid-feedback" role="alert">
+              Email is required!
+            </div>
+            <div *ngIf="email.errors?.email && email.touched"  class="invalid-feedback" role="alert">
+                Email is invalid!
+              </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4 mb-3 offset-md-4">
-        <button class="btn btn-primary btn-lg btn-block" (click)="saveUser()" type="submit">
-          Update User
-        </button>
-        <button class="btn btn-danger btn-lg btn-block" type="submit">
-          Delete User
-        </button>
+          <button
+            class="btn btn-primary btn-lg btn-block"
+            (click)="saveUser()"
+            type="submit"
+          >
+            Update User
+          </button>
+          <button class="btn btn-danger btn-lg btn-block" [routerLink]="['/admin-dashboard/manage-users']" (click)="deleteUser(user)" type="submit">
+            Delete User
+          </button>
+        </div>
       </div>
-    </div>
-      </form>
-    </div>
-    odel: {{updatedUser| json}}
+    </form>
+  </div>
 
 
   <div class="row">
-    <div class="col-md-8 offset-2">
-        <hr>
-    </div>
+    <div class="col-md-8 offset-2"><hr /></div>
   </div>
 
   <div class="row">
-
-      <div class="col-md-4 drag-column offset-md-2" >
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-muted">Non Accessable Devices</span>
-              <span class="badge badge-secondary badge-pill">{{this.availableDevices.length}}</span>
-            </h4>
-          <ul class= "list-group mb-3"style="">
-              <li *ngFor="let device of availableDevices" class="list-group-item d-flex justify-content-between lh-condensed" pDraggable="devices"
-                  (onDragStart)="dragStart($event,device)" (onDragEnd)="dragEnd($event)">
-
-                  <img src="" style="float:left" draggable="false">
-                  <div style="margin:8px 0 0 8px;float:left">{{device.id}} - {{device.name}}</div>
-                  <i-move style="float:right;margin-top:8px" *ngIf="!mobile"></i-move>
-                  <i-plus-circle style="float:right;margin-top:8px" *ngIf="mobile" (click)="clickedAssignDevice(device)"></i-plus-circle>
-              </li>
-          </ul>
-      </div>
-
-      <div class="col-md-4  drop-column" pDroppable="devices"
-        (onDrop)="drop($event)" [ngClass]="{'ui-highlight-car': draggedDevice}">
-          <!--<div class="col-md-4 order-md-2 mb-4" *ngIf="user.devices">-->
-
-              <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Accessable Devices</span>
-                <span class="badge badge-secondary badge-pill">{{user.devices.length}}</span>
-              </h4>
-
-              <ul class="list-group mb-3" *ngFor="let device of user.devices"  >
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0">{{device.name}}</h6>
-                    <div><small class="text-muted" >Room name</small></div>
-                  </div>
-                </li>
-
-                <li class="list-group-item d-flex justify-content-between">
-                  <span><button type="button" (click)="unassignDevice(device)" class="btn btn-warning">Unassign</button></span>
-                </li>
-              </ul>
-
+    <div class="col-md-4 drag-column offset-md-2">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Non Accessable Devices</span>
+        <span class="badge badge-secondary badge-pill">{{
+          this.availableDevices.length
+        }}</span>
+      </h4>
+      <ul class="list-group mb-3" style="">
+        <li
+          *ngFor="let device of availableDevices"
+          class="list-group-item d-flex justify-content-between lh-condensed"
+          pDraggable="devices"
+          (onDragStart)="dragStart($event, device)"
+          (onDragEnd)="dragEnd($event)"
+        >
+          <img src="" style="float:left" draggable="false" />
+          <div style="margin:8px 0 0 8px;float:left">
+            {{ device.id }} - {{ device.name }}
           </div>
-</div>
+          <i-move style="float:right;margin-top:8px" *ngIf="!mobile"></i-move>
+          <i-plus-circle
+            style="float:right;margin-top:8px"
+            *ngIf="mobile"
+            (click)="clickedAssignDevice(device)"
+          ></i-plus-circle>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="col-md-4  drop-column"
+      pDroppable="devices"
+      (onDrop)="drop($event)"
+      [ngClass]="{ 'ui-highlight-car': draggedDevice }"
+    >
+      <!-- <div class="col-md-4 order-md-2 mb-4" *ngIf="user.devices"> -->
+
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Accessable Devices</span>
+        <span class="badge badge-secondary badge-pill">{{
+          user.devices.length
+        }}</span>
+      </h4>
+
+      <ul class="list-group mb-3" *ngFor="let device of user.devices">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{ device.name }}</h6>
+            <div><small class="text-muted">Room name</small></div>
+          </div>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <span
+            ><button
+              type="button"
+              (click)="unassignDevice(device)"
+              class="btn btn-warning"
+            >
+              Unassign
+            </button></span
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

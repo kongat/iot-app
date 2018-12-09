@@ -11,6 +11,12 @@ export class ManageRoomsComponent implements OnInit {
   rooms: Room[];
   constructor(private roomService: RoomService) { }
 
+  newRoom: Room = {
+    id: null,
+    name: '',
+    devices: null
+  };
+
   ngOnInit() {
 
     this.roomService.getRooms()
@@ -22,4 +28,10 @@ export class ManageRoomsComponent implements OnInit {
 
   }
 
+  addRoom(newRoom: Room): void {
+    this.roomService.addRoom(newRoom)
+  .subscribe(room => this.rooms.push(room));
+
+
+}
 }
