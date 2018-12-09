@@ -15,7 +15,7 @@
       Portfolio Section
     ============================
   -->
-  <section class="portfolio" id="livingroom-background">
+  <section class="portfolio" id="{{room.name}}">
     <div class="container wow fadeInUp">
       <div class="row" id="portfolio-wrapper">
         <div *ngFor='let device of user.devices'>
@@ -24,7 +24,7 @@
         >
           <a href="">
             <img  src="../../../assets/img/Television.png" alt="" />
-            <div class="details"><h4>Lights</h4></div>
+            <div class="details"><h4>{{device.name}}</h4></div>
           </a>
 
       </div>

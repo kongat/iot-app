@@ -50,9 +50,18 @@
 .portfolio {
   padding: 80px 0;
   height: 68vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/livingroom.jpg) fixed center center;
-  background-size: cover;
+ /*  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/livingroom.jpg) fixed center center;
+  background-size: cover;*/
 
+}
+#Kitchen{
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/kitchen.jpg) fixed center center;
+  background-size: cover;
+}
+
+#Bathroom{
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/bathroom.jpg) fixed center center;
+  background-size: cover;
 }
 
 .portfolio .portfolio-wrapper {
