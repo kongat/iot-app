@@ -21,11 +21,15 @@ export class UserRoomComponent implements OnInit {
 
     this.userService.getUser(1).subscribe(data => {
       this.user = data;
+      // this.rooms.push(data.devices[0].room);
       this.user.devices.forEach(device => {
-          this.rooms.push(device.room);
+        if  (this.rooms.find(room =>
+            room.id === device.room.id)) {
+        } else {
+           this.rooms.push(device.room);
+        }
           console.log(this.rooms);
       });
-
     });
 
     this.roomService.getRooms()

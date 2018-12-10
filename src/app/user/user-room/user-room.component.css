@@ -64,6 +64,16 @@
   background-size: cover;
 }
 
+#Bedroom{
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/bedroom.jpg) fixed center center;
+  background-size: cover;
+}
+
+#Living-Room{
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/img/livingroom.jpg) fixed center center;
+  background-size: cover;
+}
+
 .portfolio .portfolio-wrapper {
   padding-right: 15px;
 }

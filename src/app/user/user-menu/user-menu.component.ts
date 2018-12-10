@@ -14,30 +14,24 @@ export class UserMenuComponent implements OnInit {
   constructor(private userService: UserService, private roomService: RoomService) { }
   user: User;
   rooms: Room[] = [];
-  allRooms: Room[] = [];
 
 
 
   ngOnInit() {
 
-    this.userService.getUser(1).subscribe(data => {
-      this.user = data;
-      this.user.devices.forEach(device => {
-          this.rooms.push(device.room);
-          console.log(this.rooms);
-
+      this.userService.getUser(1).subscribe(data => {
+        this.user = data;
+        // get the room that the user has devices in
+        this.user.devices.forEach(device => {
+          if  (this.rooms.find(room =>
+              room.id === device.room.id)) {
+          } else {
+             this.rooms.push(device.room);
+          }
+            console.log(this.rooms);
+        });
       });
-      const unique_array = Array.from(new Set(this.rooms));
-      console.log(unique_array);
 
-    });
-    this.roomService.getRooms()
-    .subscribe(
-      data => {
-         this.allRooms = data;
-    });
-
-
-}
+  }
 
 }
